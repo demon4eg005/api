@@ -1,0 +1,148 @@
+// schema.prisma
+
+generator client {
+ provider = "prisma-client-js"
+}
+
+datasource db {
+ provider = "postgresql"
+ url = env("DATABASE_URL")
+}
+
+// Prisma schema with corrections
+// Model: Tag
+model Tag {
+  id          Int           @id @default(autoincrement())
+  title       String        @unique
+  color       String
+  TagOfClient TagOfClient[]
+}
+
+// Model: Gender
+model Gender {
+  code  Int      @id @default(autoincrement())
+  name  String?
+  Client Client[]
+}
+
+// Model: Client
+model Client {
+  id              Int            @id @default(autoincrement())
+  firstName       String
+  lastName        String
+  patronymic      String?
+  birthday        DateTime?
+  registrationDate DateTime
+  email           String?
+  phone           String
+  genderCode      Int?           
+  gender          Gender?        @relation(fields: [genderCode], references: [code])
+  photoPath       String?
+  TagOfClient     TagOfClient[]
+  ClientService   ClientService[]
+}
+
+// Model: TagOfClient
+model TagOfClient {
+  clientId Int
+  tagId    Int
+  Client   Client @relation(fields: [clientId], references: [id])
+  Tag      Tag    @relation(fields: [tagId], references: [id])
+
+  @@id([clientId, tagId])
+}
+
+// Model: Service
+model Service {
+  id            Int              @id @default(autoincrement())
+  title         String
+  cost          Float
+  durationInSeconds Int
+  description   String?
+  discount      Float?
+  mainImagePath String?
+  ServicePhoto  ServicePhoto[]
+  ClientService ClientService[]
+}
+
+// Model: ServicePhoto
+model ServicePhoto {
+  id         Int     @id @default(autoincrement())
+  serviceID  Int
+  photoPath  String
+  Service    Service @relation(fields: [serviceID], references: [id])
+}
+
+// Model: Manufacturer
+model Manufacturer {
+  id         Int      @id @default(autoincrement())
+  name       String
+  startDate  DateTime
+  Product    Product[]
+}
+
+// Model: Product
+model Product {
+  id              Int              @id @default(autoincrement())
+  title           String
+  cost            Float
+  description     String?
+  mainImagePath   String?
+  isActive        Boolean
+  manufacturerId  Int
+  Manufacturer    Manufacturer     @relation(fields: [manufacturerId], references: [id])
+  ProductPhoto    ProductPhoto[]
+  attachedProducts AttachedProduct[] @relation("attachedProducts")
+  mainProducts    AttachedProduct[] @relation("mainProducts")
+  ProductSales    ProductSale[]
+}
+
+// Model: ProductPhoto
+model ProductPhoto {
+  id         Int     @id @default(autoincrement())
+  productId  Int
+  photoPath  String
+  Product    Product @relation(fields: [productId], references: [id])
+}
+
+// Model: AttachedProduct
+model AttachedProduct {
+  mainProductId     Int
+  attachedProductId Int
+  mainProduct       Product @relation("mainProducts", fields: [mainProductId], references: [id])
+  attachedProduct   Product @relation("attachedProducts", fields: [attachedProductId], references: [id])
+
+  @@id([mainProductId, attachedProductId])
+}
+
+// Model: ClientService
+model ClientService {
+  id             Int            @id @default(autoincrement())
+  clientId       Int
+  serviceId      Int
+  startTime      DateTime
+  comment        String?
+  Client         Client         @relation(fields: [clientId], references: [id])
+  Service        Service        @relation(fields: [serviceId], references: [id])
+  DocumentByService DocumentByService[]
+  ProductSale    ProductSale[]
+}
+
+// Model: DocumentByService
+model DocumentByService {
+  id             Int            @id @default(autoincrement())
+  clientServiceId Int
+  documentPath   String
+  ClientService  ClientService  @relation(fields: [clientServiceId], references: [id])
+}
+
+// Model: ProductSale
+model ProductSale {
+  id              Int            @id @default(autoincrement())
+  saleDate        DateTime
+  productId       Int
+  quantity        Int
+  clientServiceId Int
+  Product         Product        @relation(fields: [productId], references: [id])
+  ClientService   ClientService  @relation(fields: [clientServiceId], references: [id])
+}

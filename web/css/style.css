@@ -1,0 +1,297 @@
+body{
+  font-family: Lato, 'Helvetica Neue', Helvetica, sans-serif;
+color:rgba(0, 0, 0, 0.85);
+font-size: 18px;
+transition: all 0.2s;
+background-color: #3caa3c;
+}
+.logoimg{
+margin-left: 10px;
+margin-right: 360px;
+height: 50px;
+width: 60px;
+}
+h1{
+margin-left: 1px;
+
+}
+.header-div {
+  height: fit-content;
+}
+.header-div h1 { 
+  text-align: center;
+}
+#menu{
+  
+  padding: 0.5rem;
+  background-color: rgba(102, 205, 170, 0.85);
+  color: Black;
+}
+.bubbling {
+  
+  background: #006400 !important;
+  position: relative;
+  transition: all 0.2s; 
+}
+.bubbling::after {
+  
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: darkgreen;
+  opacity: .7;
+  z-index: 100;
+}
+
+:root {
+  --main-bg-color: #FFF8E7;
+  --alt-bg-color: rgba(255, 255, 255, 0.954);
+  --main-font-color: #FFFFFF;
+  --alt-font-color: rgba(0, 0, 0, 0.85);
+  --alt-font-color-light: rgba(0, 0, 0, 0.68);
+  --theme-primary: rgb(255, 255, 225);
+  --box-shadow: 2px 2px 7px -1px rgba(0, 0, 0, 0.75);
+}
+
+body.dark-mode {
+  --main-bg-color: rgb(0, 0, 0);
+  --alt-bg-color: rgb(89, 89, 89);
+  --main-font-color: #000000;
+  --alt-font-color: rgba(255, 255, 255, 0.85);
+  --alt-font-color-light: rgba(227, 227, 227, 0.68);
+  --theme-primary: #00FF00;
+}
+::placeholder {
+  
+  color: black
+}
+button{
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.75em 1.5em;
+  transition: opacity 0.2s ease;
+  background-color: #00FF00;
+  color: White;
+}
+ button{
+  margin-left:10px;
+ }
+.search-input{
+  cursor: pointer;
+  font-size: 0,5rem;
+  font-weight: 700;
+  padding: 0.65em 1.3em;
+  font-family: "sans-serif";
+  margin-bottom: 10px;
+  transition: opacity 0.2s ease;
+  background-color: #FFFFFF;
+  color: black;
+  
+}
+.sortering-combobox{
+  font-family: "sans-serif";
+  cursor: pointer;
+  font-size: 0,5rem;
+  font-weight: 700;
+  padding: 0.65em 1.3em;
+  width: 200;
+ 
+  margin-bottom: 10px;
+  transition: opacity 0.2s ease;
+  background-color: #FFFFFF;
+  color: Black;
+  border-radius:8px;
+}
+.filtrering-combobox{
+  font-family: "sans-serif";
+  cursor: pointer;
+  font-size: 0,9rem;
+  font-weight: 700;
+  padding: 0.65em 1.3em;
+  width: 200;
+  
+  margin-bottom: 10px;
+  transition: opacity 0.2s ease;
+  background-color: #FFFFFF;
+  color: Black;
+  border-radius:8px;
+}
+.product-grid{
+  width: 100%;
+  background-color: #00FF00;
+  font-family: "sans-serif";
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+}
+.card{
+  position: relative;
+  display:block;
+  font-size: 12px;
+  backface-visibility: hidden;
+  justify-content: center;
+  color: white;
+  font-size: 1.2em;
+  border-radius: 8px;
+  text-align: center;
+  
+}
+td.active{
+background: rgb(255, 26, 26);
+background-color: rgb(245, 50, 50);
+}
+td[is-active="true"] {
+margin: 10px;
+font-size: 12px;
+background-color: White;
+color:rgba(0, 0, 0, 0.68)
+}
+
+td[is-active="false"] {
+margin: 3px;
+font-size: 17px;
+background-color: #FFFFFF;
+background-color: rgb(135, 227, 237);
+}
+input{
+background-color: rgba(102, 205, 170);
+color: black;
+}
+
+.historyForm{
+z-index: 2; 
+}
+td.active{
+background: rgba(158, 242, 255, 0.85);
+background-color: rgba(158, 242, 255, 0.85);
+}
+
+td:hover{
+
+background: rgba(158, 242, 255, 0.85);
+background-color: rgba(158, 242, 255, 0.85)
+
+}
+.historytable{
+width: 100%;
+border-collapse: collapse;
+}
+
+th, td {
+
+padding: 8px;
+text-align: left;
+}
+
+th {
+background-color: rgba(158, 242, 255, 0.85);
+}
+
+tr:hover {
+background-color: #f1f1f1;
+}
+img{
+width: 70%;
+height: 50%;
+object-fit: contain;
+border-radius: 15px;
+}
+
+h3{
+ vertical-align: bottom;
+ height: 30;
+}
+
+p{
+  vertical-align: bottom;
+  height: 30;
+}
+#addForm {
+display: none; 
+position: fixed;
+top: 50%;
+width: 400px;
+height: 500px;
+left: 50%;
+transform: translate(-50%, -50%); 
+border: 1px solid #ccc;
+padding: 20px;
+background-color:  #00FF00;
+z-index: 1000;
+}
+
+#addForm .delete[edit="false"] {
+  display: none;
+  
+}
+
+#addForm .delete[edit="true"] {
+  display: auto;
+  
+}
+
+
+
+#historyForm {
+  display: none; 
+  position: fixed;
+  top: 50%;
+  width: 500px;
+  height: 500px;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #00FF00;
+  z-index: 1000;
+  }
+  td{
+    background-color: rgba(158, 242, 255, 0.85);
+  }
+  h2{
+    Color: White;
+  }
+.close-btn {
+background: none;
+border: none;
+color: red;
+font-size: 24px;
+cursor: pointer;
+position: absolute;
+top: 10px;
+right: 10px;
+}
+.open-button{
+  margin-right: 300px;
+}
+.close-btn:hover {
+color: red;
+}
+
+#addForm input, .form textarea, .form select, .form div {
+  width: 90%;
+  padding: 15px;
+  margin: 5px;
+  border: none;
+  background: #f1f1f1;
+  color: black;
+}
+
+#addForm {
+  align-items: center;
+}
+#addForm .button{
+  background: rgba(158, 242, 255, 0.85);
+}
+
+
+
+#addForm .buttons {
+  max-width: fit-content;
+  background: #00FF00;
+ 
+}

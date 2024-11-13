@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автосервис "Модный каприз для Вашего авто"</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header id="menu" class="headerBtn">
+      <div class="header-div">
+        <h1>Автосервис "Старая кляча"</h1>
+        <button class="open-button" onclick="openForm()">Добавить товар</button>
+        <input class="search-input" type="text" placeholder="Поиск...">
+        
+        <select class="sortering-combobox" id="sort-combobox">
+            <option value="0">Без сортировки</option>
+            <option value="asc">По возрастанию</option>
+            <option value="desc">По убыванию</option>
+        </select>
+        <select class="filtrering-combobox" id="filter-combobox">
+            <option value="0">Выберите производителя</option>
+        </select>
+
+        <button id="historyButton" class="history-button SuperButton">История товара</button> 
+        <button id="editButton" class="edit-button SuperButton">Изменить</button> 
+      </div>
+        
+        
+        <div class="form-popup" id="addForm">
+          <form id="product-form" class="form">
+            <input type="text" name="ID" autocomplete="off" readonly>
+            <input type="text" name="title" placeholder="Введите название" autocomplete="off">
+            <input type="number" min="1" step="any" name="cost" placeholder="Введите цену" autocomplete="off">
+            <select name="manufacturer">
+              <option value="0">Выберите производителя</option>
+            </select>
+            <select name="isactive">
+              <option value="0">Неактивен</option>
+              <option value="1">Активен</option>
+            </select>
+            <textarea name="description" placeholder="Введите описание"></textarea>
+            <div class="buttons">
+              <button type="submit" class="button">Сохранить</button>
+              <button type="button" class="button cancel" onclick="closeForm()">Закрыть</button>
+              <button type="button" class="button delete">Удалить</button>
+            </div>
+          </form> 
+        </div>
+
+        <div class="form-popup" id="historyForm">
+          <h2>История товара</h2>
+          <button id="closeFormBtn" type="button" class="close-btn">&times;</button>
+          <form id="historyFormid" class="historyForm">
+               <table id="productsHistoryTable">
+                  <thead>
+                      <tr>
+                          <th>Код продажи</th>
+                          <th>Код продукта</th>
+                          <th>Дата продажи</th>
+                          <th>Количество</th>
+                      </tr>
+                  </thead>
+                  <tbody></tbody>
+              </table>
+          </form>
+      </div>
+    </header>
+
+    <table id="products-table" class="product-grid"></table>
+
+    <script src="script.js"></script>
+</body>
+</html>
